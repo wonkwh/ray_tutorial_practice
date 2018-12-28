@@ -18,6 +18,7 @@
 		553A7774217FA517008B1BAF /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553A776D217FA517008B1BAF /* LogViewController.swift */; };
 		553A7775217FA517008B1BAF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553A776E217FA517008B1BAF /* MapViewController.swift */; };
 		553A7776217FA517008B1BAF /* SpecimenAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553A776F217FA517008B1BAF /* SpecimenAnnotation.swift */; };
+		8997722021D59EFC00012CA3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8997721F21D59EFC00012CA3 /* Category.swift */; };
 		BF3BC7ED4324496BE35BC28A /* Pods_Agents_Partner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AE0BD3AA3BCE6B7935FAAA /* Pods_Agents_Partner.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		553A776D217FA517008B1BAF /* LogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		553A776E217FA517008B1BAF /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		553A776F217FA517008B1BAF /* SpecimenAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecimenAnnotation.swift; sourceTree = "<group>"; };
+		8997721F21D59EFC00012CA3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E9E1AFC091BEA44BB3B7C05A /* Pods-Agents Partner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agents Partner.release.xcconfig"; path = "Pods/Target Support Files/Pods-Agents Partner/Pods-Agents Partner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 			children = (
 				553A7769217FA517008B1BAF /* Specimen.swift */,
 				553A776F217FA517008B1BAF /* SpecimenAnnotation.swift */,
+				8997721F21D59EFC00012CA3 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				553A7773217FA517008B1BAF /* LogCell.swift in Sources */,
 				553A7755217F98CA008B1BAF /* AppDelegate.swift in Sources */,
 				553A7774217FA517008B1BAF /* LogViewController.swift in Sources */,
+				8997722021D59EFC00012CA3 /* Category.swift in Sources */,
 				553A7771217FA517008B1BAF /* CategoriesTableViewController.swift in Sources */,
 				553A7775217FA517008B1BAF /* MapViewController.swift in Sources */,
 				553A7776217FA517008B1BAF /* SpecimenAnnotation.swift in Sources */,
