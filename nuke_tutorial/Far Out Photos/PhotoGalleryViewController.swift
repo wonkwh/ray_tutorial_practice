@@ -27,6 +27,7 @@
 /// THE SOFTWARE.
 
 import UIKit
+import Nuke
 
 class PhotoGalleryViewController: UICollectionViewController {
   var photoURLs: [URL] = []
@@ -63,13 +64,22 @@ extension PhotoGalleryViewController {
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
     
-    if let imageData = try? Data(contentsOf: photoURLs[indexPath.row]),
-      let image = UIImage(data: imageData) {
-        cell.imageView.image = image
-    } else {
-      cell.imageView.image = nil
-    }
+    // MARK: - loading remote image
+//    if let imageData = try? Data(contentsOf: photoURLs[indexPath.row]),
+//      let image = UIImage(data: imageData) {
+//        cell.imageView.image = image
+//    } else {
+//      cell.imageView.image = nil
+//    }
+
+    let options = ImageLoadingOptions(
+      placeholder: #imageLiteral(resourceName: "dark-moon"),
+      transition: .fadeIn(duration: 0.5)
+    )
     
+    Nuke.loadImage(with: photoURLs[indexPath.row], options: options, into: cell.imageView,
+                   progress: nil,
+                   completion: nil)
     return cell
   }
 }

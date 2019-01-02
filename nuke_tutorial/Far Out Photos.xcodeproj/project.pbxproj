@@ -15,9 +15,13 @@
 		9F227A87215AC81000C83B03 /* NASAPhotos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F227A86215AC81000C83B03 /* NASAPhotos.plist */; };
 		9FDC071C215AD1C100330A8D /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071B215AD1C100330A8D /* PhotoCell.swift */; };
 		9FDC0720215BFD7100330A8D /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDC071F215BFD7100330A8D /* PhotoViewController.swift */; };
+		E4BC4549E13F427DC3688C90 /* Pods_Far_Out_Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F3DF4E4AA02EC6695254A /* Pods_Far_Out_Photos.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E18C3A22B52EBEBAC8B07B7 /* Pods-Far Out Photos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Far Out Photos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Far Out Photos/Pods-Far Out Photos.debug.xcconfig"; sourceTree = "<group>"; };
+		84E1A816D657819FE8F1F2EC /* Pods-Far Out Photos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Far Out Photos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Far Out Photos/Pods-Far Out Photos.release.xcconfig"; sourceTree = "<group>"; };
+		936F3DF4E4AA02EC6695254A /* Pods_Far_Out_Photos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Far_Out_Photos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F227A71215AC7DD00C83B03 /* Far Out Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Far Out Photos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F227A74215AC7DD00C83B03 /* AppDelegate.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; tabWidth = 2; };
 		9F227A76215AC7DD00C83B03 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
@@ -35,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4BC4549E13F427DC3688C90 /* Pods_Far_Out_Photos.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A4F20ECB3BB89DED826B78B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				936F3DF4E4AA02EC6695254A /* Pods_Far_Out_Photos.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8541050EFD169182E830585F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4E18C3A22B52EBEBAC8B07B7 /* Pods-Far Out Photos.debug.xcconfig */,
+				84E1A816D657819FE8F1F2EC /* Pods-Far Out Photos.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9F227A68215AC7DD00C83B03 = {
 			isa = PBXGroup;
 			children = (
 				9F227A73215AC7DD00C83B03 /* Far Out Photos */,
 				9F227A72215AC7DD00C83B03 /* Products */,
+				8541050EFD169182E830585F /* Pods */,
+				1A4F20ECB3BB89DED826B78B /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -82,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F227A83215AC7E000C83B03 /* Build configuration list for PBXNativeTarget "Far Out Photos" */;
 			buildPhases = (
+				0C176DF37238353300767916 /* [CP] Check Pods Manifest.lock */,
 				9F227A6D215AC7DD00C83B03 /* Sources */,
 				9F227A6E215AC7DD00C83B03 /* Frameworks */,
 				9F227A6F215AC7DD00C83B03 /* Resources */,
+				2E07A716A916097BA92E2D6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -141,6 +167,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0C176DF37238353300767916 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Far Out Photos-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E07A716A916097BA92E2D6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Far Out Photos/Pods-Far Out Photos-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Far Out Photos/Pods-Far Out Photos-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9F227A6D215AC7DD00C83B03 /* Sources */ = {
@@ -294,6 +367,7 @@
 		};
 		9F227A84215AC7E000C83B03 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E18C3A22B52EBEBAC8B07B7 /* Pods-Far Out Photos.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -312,6 +386,7 @@
 		};
 		9F227A85215AC7E000C83B03 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84E1A816D657819FE8F1F2EC /* Pods-Far Out Photos.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
