@@ -121,11 +121,21 @@ extension PhotoGalleryViewController {
       return
     }
 
-    if let imageData = try? Data(contentsOf: photoURLs[indexPath.row]),
-      let image = UIImage(data: imageData) {
-      
-      photoViewController.image = image
-    }
+    photoViewController.image = ImageLoadingOptions.shared.placeholder
+    photoViewController.contentMode = .scaleAspectFit
+    
+    ImagePipeline.shared.loadImage(with: photoURLs[indexPath.row],
+                                   progress: nil,
+                                   completion: { response , err in
+                                    if err != nil {
+                                      photoViewController.image = ImageLoadingOptions.shared.failureImage
+                                      photoViewController.contentMode = .scaleAspectFit
+                                    } else {
+                                      photoViewController.image = response?.image
+                                      photoViewController.contentMode = .scaleAspectFill
+                                    }
+    })
+    
     navigationController?.pushViewController(photoViewController, animated: true)
   }
 }

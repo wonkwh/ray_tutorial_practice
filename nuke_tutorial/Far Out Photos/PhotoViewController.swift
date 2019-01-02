@@ -29,7 +29,17 @@
 import UIKit
 
 class PhotoViewController: UIViewController {
-  var image: UIImage?
+  var image: UIImage? {
+    didSet {
+      imageView?.image = image
+    }
+  }
+  
+  var contentMode: UIView.ContentMode = .scaleAspectFill {
+    didSet {
+      imageView?.contentMode = contentMode
+    }
+  }
   
   @IBOutlet weak var imageView: UIImageView?
   
@@ -39,6 +49,7 @@ class PhotoViewController: UIViewController {
     if let image = image {
       imageView?.image = image
     }
+    imageView?.contentMode = contentMode
   }
   
   static func instantiate() -> PhotoViewController? {
