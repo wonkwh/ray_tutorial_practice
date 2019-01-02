@@ -58,6 +58,16 @@ class PhotoGalleryViewController: UICollectionViewController {
     }
     
     photoURLs = urlPaths.compactMap { URL(string: $0) }
+    
+    let contentModes = ImageLoadingOptions.ContentModes(
+      success: .scaleAspectFill,
+      failure: .scaleAspectFit,
+      placeholder: .scaleAspectFit)
+    
+    ImageLoadingOptions.shared.contentModes = contentModes
+    ImageLoadingOptions.shared.placeholder = #imageLiteral(resourceName: "dark-moon")
+    ImageLoadingOptions.shared.failureImage = #imageLiteral(resourceName: "annoyed")
+    ImageLoadingOptions.shared.transition = .fadeIn(duration: 0.5)
   }
 }
 
@@ -72,18 +82,11 @@ extension PhotoGalleryViewController {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
     
     // MARK: - loading remote image
-    let options = ImageLoadingOptions(
-      placeholder: #imageLiteral(resourceName: "dark-moon"),
-      transition: .fadeIn(duration: 0.5)
-    )
-    
     let request = ImageRequest(url: photoURLs[indexPath.row],
                                targetSize: CGSize(width: pixelSize, height: pixelSize),
                                contentMode: .aspectFill)
     
-    Nuke.loadImage(with: request, options: options, into: cell.imageView,
-                   progress: nil,
-                   completion: nil)
+    Nuke.loadImage(with: request, into: cell.imageView)
     return cell
   }
 }
