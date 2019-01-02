@@ -36,6 +36,13 @@ class PhotoGalleryViewController: UICollectionViewController {
   let columns: CGFloat = 3
   var cellSize: CGFloat = 0
   
+  //get pixel size for nuke request
+  var pixelSize: CGFloat {
+    get {
+      return cellSize * UIScreen.main.scale
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -65,19 +72,16 @@ extension PhotoGalleryViewController {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
     
     // MARK: - loading remote image
-//    if let imageData = try? Data(contentsOf: photoURLs[indexPath.row]),
-//      let image = UIImage(data: imageData) {
-//        cell.imageView.image = image
-//    } else {
-//      cell.imageView.image = nil
-//    }
-
     let options = ImageLoadingOptions(
       placeholder: #imageLiteral(resourceName: "dark-moon"),
       transition: .fadeIn(duration: 0.5)
     )
     
-    Nuke.loadImage(with: photoURLs[indexPath.row], options: options, into: cell.imageView,
+    let request = ImageRequest(url: photoURLs[indexPath.row],
+                               targetSize: CGSize(width: pixelSize, height: pixelSize),
+                               contentMode: .aspectFill)
+    
+    Nuke.loadImage(with: request, options: options, into: cell.imageView,
                    progress: nil,
                    completion: nil)
     return cell
