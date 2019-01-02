@@ -59,6 +59,20 @@ class PhotoGalleryViewController: UICollectionViewController {
     
     photoURLs = urlPaths.compactMap { URL(string: $0) }
     
+    // cache
+    DataLoader.sharedUrlCache.diskCapacity = 0
+    ImagePipeline.shared = ImagePipeline {
+      let dataCache = try! DataCache(name: "com.razeware.Far-Out-Photos.datacache")
+      dataCache.sizeLimit = 200 * 1024 * 1024
+      $0.dataCache = dataCache
+    }
+    
+    // delete cache
+//    if let dataCache = ImagePipeline.shared
+//      .configuration.dataCache as? DataCache {
+//      dataCache.removeAll()
+//    }
+    
     let contentModes = ImageLoadingOptions.ContentModes(
       success: .scaleAspectFill,
       failure: .scaleAspectFit,
