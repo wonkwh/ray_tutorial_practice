@@ -1,0 +1,34 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+
+identifier_name:
+  excluded:
+    - id
+    - w
+    - h
+    - x
+    - y
+    - z
+    - vc
+    - r
+    - g
+    - b
+  allowed_symbols:
+    - _
+
+excluded:
+  - Carthage
+  - Pods
+
+colon:
+  apply_to_dictionaries: false
+
+indentation: 2
+
+custom_rules:
+  no_objcMembers:
+    name: "@objcMembers"
+    regex: "@objcMembers"
+    message: "Explicitly use @objc on each member you want to expose to Objective-C"
+    severity: error

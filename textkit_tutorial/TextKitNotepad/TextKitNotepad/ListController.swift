@@ -19,7 +19,6 @@ class ListController: UITableViewController {
         Note(text: "A collection of thoughts\rWhy do birds sing? Why is the sky blue? Why is it so hard to create good test data?")
     ]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,7 +83,6 @@ extension ListController {
     }
 }
 
-
 class CustomNavigationController: UINavigationController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -99,4 +97,3 @@ extension UIColor {
         return UIColor(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
-
