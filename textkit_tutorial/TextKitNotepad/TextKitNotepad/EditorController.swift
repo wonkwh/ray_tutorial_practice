@@ -9,29 +9,15 @@
 import UIKit
 
 class EditorController: UIViewController {
-    let textView: UITextView = {
-        let view = UITextView()
-        view.font = .preferredFont(forTextStyle: .body)
-        view.adjustsFontForContentSizeCategory = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
+    var textView: UITextView!
+    var textStorage: SyntaxHighlightTextStorage!
     var note: Note!
     var timeView: TimeIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(textView)
-        textView.delegate = self
         
-        textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        textView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        textView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-        textView.isScrollEnabled = true
-        textView.text = note.contents
+        createTextView()
         setupNavBar()
         setupTimeIndicatorView()
         
@@ -49,11 +35,45 @@ class EditorController: UIViewController {
         updateTimeIndicatorFrame()
     }
     
+    func createTextView() {
+        // 1
+        let attrs = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .body)]
+        let attrString = NSAttributedString(string: note.contents, attributes: attrs)
+        textStorage = SyntaxHighlightTextStorage()
+        textStorage.append(attrString)
+        
+        let newTextViewRect = view.bounds
+        
+        // 2
+        let layoutManager = NSLayoutManager()
+        
+        // 3
+        let containerSize = CGSize(width: newTextViewRect.width,
+                                   height: .greatestFiniteMagnitude)
+        let container = NSTextContainer(size: containerSize)
+        container.widthTracksTextView = true
+        layoutManager.addTextContainer(container)
+        textStorage.addLayoutManager(layoutManager)
+        
+        // 4
+        textView = UITextView(frame: newTextViewRect, textContainer: container)
+        textView.delegate = self
+        view.addSubview(textView)
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textView.topAnchor.constraint(equalTo: view.topAnchor),
+            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+    }
+    
     fileprivate func updateTimeIndicatorFrame() {
         timeView.updateSize()
         timeView.frame = timeView.frame.offsetBy(dx: textView.frame.width - timeView.frame.width, dy: 0)
         
-        //timeView에 글자가 가리지 않게 
+        //timeView에 글자가 가리지 않게
         let exclusionPath = timeView.curvePathWithOrigin(timeView.center)
         textView.textContainer.exclusionPaths = [exclusionPath]
     }

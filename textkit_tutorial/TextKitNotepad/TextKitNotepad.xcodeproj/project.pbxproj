@@ -11,6 +11,7 @@
 		895342BB221C92C500DF8F17 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895342BA221C92C500DF8F17 /* ListController.swift */; };
 		895342C0221C92C600DF8F17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 895342BF221C92C600DF8F17 /* Assets.xcassets */; };
 		895342C3221C92C600DF8F17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 895342C1221C92C600DF8F17 /* LaunchScreen.storyboard */; };
+		89C5D4042227E36900847632 /* SyntaxHighlightTextStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89C5D4032227E36900847632 /* SyntaxHighlightTextStorage.swift */; };
 		89D36277221C9E5A0055DA9E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D36276221C9E5A0055DA9E /* Note.swift */; };
 		89D36279221CA1A10055DA9E /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D36278221CA1A10055DA9E /* NoteCell.swift */; };
 		89D3627B221CA4D10055DA9E /* TimeIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89D3627A221CA4D10055DA9E /* TimeIndicatorView.swift */; };
@@ -24,6 +25,7 @@
 		895342BF221C92C600DF8F17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		895342C2221C92C600DF8F17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		895342C4221C92C600DF8F17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		89C5D4032227E36900847632 /* SyntaxHighlightTextStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxHighlightTextStorage.swift; sourceTree = "<group>"; };
 		89D36276221C9E5A0055DA9E /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		89D36278221CA1A10055DA9E /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		89D3627A221CA4D10055DA9E /* TimeIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeIndicatorView.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				89D36276221C9E5A0055DA9E /* Note.swift */,
 				89D36278221CA1A10055DA9E /* NoteCell.swift */,
 				89D3627C221CA4E50055DA9E /* EditorController.swift */,
+				89C5D4032227E36900847632 /* SyntaxHighlightTextStorage.swift */,
 			);
 			path = TextKitNotepad;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				895342BB221C92C500DF8F17 /* ListController.swift in Sources */,
 				895342B9221C92C500DF8F17 /* AppDelegate.swift in Sources */,
+				89C5D4042227E36900847632 /* SyntaxHighlightTextStorage.swift in Sources */,
 				89D36277221C9E5A0055DA9E /* Note.swift in Sources */,
 				89D36279221CA1A10055DA9E /* NoteCell.swift in Sources */,
 				89D3627D221CA4E50055DA9E /* EditorController.swift in Sources */,
