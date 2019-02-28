@@ -29,7 +29,8 @@
 import UIKit
 
 class TimeIndicatorView: UIView {
-  let fillColor = UIColor(red: 0.329, green: 0.584, blue: 0.898, alpha: 1)
+  //let fillColor = UIColor(red: 0.329, green: 0.584, blue: 0.898, alpha: 1)
+  let fillColor = UIColor.rgb(r: 50, g: 199, b: 242)
   var label = UILabel()
   
   required init?(coder aDecoder: NSCoder) {

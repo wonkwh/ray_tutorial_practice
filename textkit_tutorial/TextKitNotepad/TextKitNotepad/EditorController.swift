@@ -18,6 +18,7 @@ class EditorController: UIViewController {
     }()
 
     var note: Note!
+    var timeView: TimeIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class EditorController: UIViewController {
         textView.isScrollEnabled = true
         textView.text = note.contents
         setupNavBar()
+        setupTimeIndicatorView()
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardDidShow),
@@ -41,6 +43,24 @@ class EditorController: UIViewController {
                                                selector: #selector(keyboardDidHide),
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        updateTimeIndicatorFrame()
+    }
+    
+    fileprivate func updateTimeIndicatorFrame() {
+        timeView.updateSize()
+        timeView.frame = timeView.frame.offsetBy(dx: textView.frame.width - timeView.frame.width, dy: 0)
+        
+        //timeView에 글자가 가리지 않게 
+        let exclusionPath = timeView.curvePathWithOrigin(timeView.center)
+        textView.textContainer.exclusionPaths = [exclusionPath]
+    }
+    
+    fileprivate func setupTimeIndicatorView() {
+        timeView = TimeIndicatorView(date: note.timestamp)
+        textView.addSubview(timeView)
     }
     
     fileprivate func setupNavBar() {
