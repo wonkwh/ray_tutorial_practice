@@ -11,6 +11,8 @@ import UIKit
 class EditorController: UIViewController {
     let textView: UITextView = {
         let view = UITextView()
+        view.font = .preferredFont(forTextStyle: .body)
+        view.adjustsFontForContentSizeCategory = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -42,7 +44,7 @@ class EditorController: UIViewController {
     }
     
     fileprivate func setupNavBar() {
-        navigationItem.title = "Your Note"
+        navigationItem.title = note.title
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .yellow
         navigationController?.navigationBar.isTranslucent = false
