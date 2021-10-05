@@ -53,8 +53,40 @@ class RepoReporterTests: XCTestCase {
   }
 
   func testFavoriteButtonTapped() {
+    let store = TestStore(
+      initialState: RepositoryState(),
+      reducer: repositoryReducer,
+      environment: SystemEnvironment(
+        environment: RepositoryEnvironment(request: testRepositoryEffect),
+        mainQueue: { self.testScheduler.eraseToAnyScheduler() },
+        decoder: { JSONDecoder() }
+      )
+    )
+    
+    guard let testRepo = testRepositories.first else {
+      fatalError("Error in test setup")
+    }
+    
+    store.send(.favoriteButtenTapped(testRepo)) { state in
+      state.favoriteRepositories.append(testRepo)
+    }
   }
 
   func testOnAppear() {
+    let store = TestStore(
+      initialState: RepositoryState(),
+      reducer: repositoryReducer,
+      environment: SystemEnvironment(
+        environment: RepositoryEnvironment(request: testRepositoryEffect),
+        mainQueue: { self.testScheduler.eraseToAnyScheduler() },
+        decoder: { JSONDecoder() }
+      )
+    )
+    
+    store.send(.onAppear)
+    testScheduler.advance()
+    store.receive(.dataLoaded(.success(testRepositories))) { state in
+      state.repositories = self.testRepositories
+    }
   }
 }
