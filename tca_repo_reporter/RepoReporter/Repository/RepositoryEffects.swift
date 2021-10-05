@@ -34,7 +34,7 @@ import Foundation
 import ComposableArchitecture
 
 func repositoryEffect(decoder: JSONDecoder) -> Effect<[RepositoryModel], APIError> {
-  guard let url = URL(string: "https://api.github.com/users/raywenderlich/repos?sort=updated&per_page=10") else {
+  guard let url = URL(string: "https://api.github.com/users/wonkwh/repos?sort=updated&per_page=10") else {
     fatalError("Error on creating url")
   }
   return URLSession.shared.dataTaskPublisher(for: url)
